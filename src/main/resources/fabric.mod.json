@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "id": "qol",
+  "version": "${version}",
+
+  "name": "Qol Enchants",
+  "description": "Adds a bunch of enchantments.",
+  "authors": [
+    "roguezilla"
+  ],
+  "contact": {
+    "homepage": "https://roguezilla.github.io/",
+    "sources": "https://github.com/Roguezilla/QoL-Enchants"
+  },
+
+  "license": "CC0-1.0",
+  "icon": "assets/bm/icon.png",
+
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "io.github.roguezilla.qol.enchants.ModInit"
+    ]
+  },
+  "mixins": [
+    "qol.mixins.json"
+  ],
+
+  "depends": {
+    "fabricloader": ">=0.7.2",
+    "fabric": "*",
+    "minecraft": "1.15.x"
+  },
+  "suggests": {
+    "flamingo": "*"
+  }
+}

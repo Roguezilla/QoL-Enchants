@@ -1,0 +1,13 @@
+{
+  "required": true,
+  "package": "io.github.roguezilla.qol.enchants.mixins",
+  "compatibilityLevel": "JAVA_8",
+  "mixins": [
+    "onBreakMixin", "getDroppedStacksMixin", "differsMixin"
+  ],
+  "client": [
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
