@@ -34,7 +34,6 @@ public abstract class getDroppedStacksMixin {
 			if(state.getBlock() instanceof CropBlock) {
 				if(state.getEntries().get(((CropBlock)state.getBlock()).getAgeProperty()).toString().equalsIgnoreCase(Integer.toString(((CropBlock)state.getBlock()).getMaxAge()))) {
 					if(!(builder.getWorld().getBlockState(ModInit.brokenBlockPos).getBlock() instanceof CropBlock)) {
-						System.out.println(1);
 						builder.getWorld().setBlockState(ModInit.brokenBlockPos, Block.getBlockFromItem(drops.get(1).getItem()).getDefaultState());
 					}
 					drops.get(1).decrement(1);
