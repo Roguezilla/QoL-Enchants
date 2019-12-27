@@ -49,6 +49,7 @@ public class ModInit implements ModInitializer {
                 Vec3d combined = cameraPos.add(rotation.x * 5, rotation.y * 5, rotation.z * 5);
                 BlockHitResult blockHitResult = world.rayTrace(new RayTraceContext(cameraPos, combined, RayTraceContext.ShapeType.OUTLINE, RayTraceContext.FluidHandling.NONE, player));
                 if (blockHitResult.getType() == HitResult.Type.BLOCK && world.getBlockState(blockHitResult.getBlockPos()).getBlock() != Blocks.TORCH && world.getBlockState(blockHitResult.getBlockPos()).getBlock() != Blocks.WALL_TORCH) {
+                    //cringe code below
                     switch(blockHitResult.getSide().getAxis().getName()) {
                         case "y": {
                             BlockPos newpos = new BlockPos(blockHitResult.getBlockPos().getX(), blockHitResult.getBlockPos().getY() + 1, blockHitResult.getBlockPos().getZ());

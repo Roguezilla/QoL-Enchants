@@ -10,7 +10,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(InfinityEnchantment.class)
 public abstract class differsMixin {
-    @Inject(at = @At("HEAD"), method = "differs")
+    @Inject(at = @At("HEAD"), method = "differs", cancellable = true)
     private void differs(Enchantment other, CallbackInfoReturnable<Boolean> cbinfo) {
         if(other instanceof MendingEnchantment) cbinfo.setReturnValue(true);
     }
