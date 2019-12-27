@@ -23,7 +23,7 @@ public abstract class getDroppedStacksMixin {
 
 		if(EnchantmentHelper.getEnchantments(MinecraftClient.getInstance().player.inventory.getMainHandStack()).get(ModInit.NATURES_GIFT) != null) {
 			if (state.getBlock() instanceof CropBlock) {
-				if (state.getEntries().get(((CropBlock) state.getBlock()).getAgeProperty()).toString().equalsIgnoreCase(Integer.toString(((CropBlock) state.getBlock()).getMaxAge()))) {
+				if (state.getEntries().get(((CropBlock)state.getBlock()).getAgeProperty()).toString().equalsIgnoreCase(Integer.toString(((CropBlock)state.getBlock()).getMaxAge()))) {
 					for (ItemStack item : drops) {
 						item.increment(item.getCount());
 					}
@@ -33,7 +33,10 @@ public abstract class getDroppedStacksMixin {
 		if(EnchantmentHelper.getEnchantments(MinecraftClient.getInstance().player.inventory.getMainHandStack()).get(ModInit.CROP_REPLANTER) != null) {
 			if(state.getBlock() instanceof CropBlock) {
 				if(state.getEntries().get(((CropBlock)state.getBlock()).getAgeProperty()).toString().equalsIgnoreCase(Integer.toString(((CropBlock)state.getBlock()).getMaxAge()))) {
-					builder.getWorld().setBlockState(ModInit.brokenBlockPos, Block.getBlockFromItem(drops.get(1).getItem()).getDefaultState());
+					if(!(builder.getWorld().getBlockState(ModInit.brokenBlockPos).getBlock() instanceof CropBlock)) {
+						System.out.println(1);
+						builder.getWorld().setBlockState(ModInit.brokenBlockPos, Block.getBlockFromItem(drops.get(1).getItem()).getDefaultState());
+					}
 					drops.get(1).decrement(1);
 				}
 			}
