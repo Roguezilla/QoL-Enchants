@@ -22,8 +22,12 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.RayTraceContext;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class ModInit implements ModInitializer {
+    public static final Logger logger = LogManager.getLogger();
+
     public static final String MODID = "qol";
 
     public static final Enchantment SHAPED_MINING = new ShapedMining();

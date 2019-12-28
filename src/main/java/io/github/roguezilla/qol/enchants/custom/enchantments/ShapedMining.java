@@ -1,6 +1,9 @@
 package io.github.roguezilla.qol.enchants.custom.enchantments;
 
+import io.github.roguezilla.qol.enchants.ModInit;
+import net.minecraft.client.MinecraftClient;
 import net.minecraft.enchantment.Enchantment;
+import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.EnchantmentTarget;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.item.HoeItem;
@@ -13,7 +16,7 @@ public class ShapedMining extends Enchantment {
 
     @Override
     public boolean isAcceptableItem(ItemStack stack) {
-        if(stack.getItem() instanceof HoeItem) {
+        if(stack.getItem() instanceof HoeItem && EnchantmentHelper.getEnchantments(stack).get(ModInit.CROP_REPLANTER) != null) {
             return true;
         }
         return super.isAcceptableItem(stack);
