@@ -39,9 +39,10 @@ public abstract class onBreakMixin {
 
 		if(EnchantmentHelper.getEnchantments(player.inventory.getMainHandStack()).get(ModInit.SHAPED_MINING) != null) {
 			for(HashMap.Entry<BlockPos, Boolean> blockInfo : getBlocksToBreak(world, player).entrySet()) {
+				BlockState blockState = world.getBlockState(blockInfo.getKey()).getBlock().getDefaultState();
 				world.breakBlock(blockInfo.getKey(), !player.abilities.creativeMode);
 				if(blockInfo.getValue() == true) {
-					world.setBlockState(blockInfo.getKey(), state.getBlock().getDefaultState());
+					world.setBlockState(blockInfo.getKey(), blockState);
 				}
 			}
 		}
@@ -74,7 +75,9 @@ public abstract class onBreakMixin {
 				BlockPos pos = origin.add(arr[0], arr[1], arr[2]);
 				if(!(world.getBlockState(pos).getBlock() instanceof AirBlock)) {
 					if(world.getBlockState(pos).getBlock() instanceof CropBlock) {
-						blocksToBreak.put(pos, true);
+						if (world.getBlockState(pos).getEntries().get(((CropBlock)world.getBlockState(pos).getBlock()).getAgeProperty()).toString().equalsIgnoreCase(Integer.toString(((CropBlock)world.getBlockState(pos).getBlock()).getMaxAge()))) {
+							blocksToBreak.put(pos, true);
+						}
 					} else {
 						blocksToBreak.put(pos, false);
 					}
